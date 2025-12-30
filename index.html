@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detector | Monse Rojo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #000; color: #fff; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; padding: 60px 0; border-bottom: 3px solid #ffff00; margin-bottom: 60px; }
+        h1 { font-size: 3rem; margin-bottom: 20px; color: #ffff00; text-transform: uppercase; }
+        .subtitle { font-size: 1.3rem; color: #999; margin-bottom: 30px; }
+        .meta { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .meta-item { padding: 10px 20px; background: rgba(255, 255, 0, 0.1); border: 2px solid #ffff00; border-radius: 5px; }
+        .overview { background: #111; padding: 40px; margin-bottom: 60px; border-left: 5px solid #ffff00; }
+        .overview h2 { color: #ffff00; margin-bottom: 20px; font-size: 1.8rem; }
+        .overview p { color: #ccc; margin-bottom: 15px; font-size: 1.1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 60px; }
+        .stat-card { background: #111; padding: 30px; border: 2px solid #333; transition: all 0.3s; }
+        .stat-card:hover { border-color: #ffff00; transform: translateY(-5px); }
+        .stat-number { font-size: 2.5rem; color: #ffff00; font-weight: bold; margin-bottom: 10px; }
+        .stat-label { color: #999; }
+        .viz-item { margin-bottom: 60px; background: #111; padding: 30px; border: 2px solid #222; }
+        .viz-item h3 { color: #ffff00; margin-bottom: 20px; font-size: 1.5rem; }
+        .viz-item img { width: 100%; border: 2px solid #333; margin-bottom: 20px; }
+        .viz-description { color: #999; line-height: 1.8; }
+        .links { text-align: center; padding: 40px 0; }
+        .btn { display: inline-block; padding: 15px 40px; background: transparent; border: 2px solid #ffff00; color: #ffff00; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: all 0.3s; margin: 10px; }
+        .btn:hover { background: #ffff00; color: #000; }
+        footer { text-align: center; padding: 40px 0; border-top: 2px solid #222; color: #666; }
+        footer a { color: #ffff00; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Email Spam Detector</h1>
+            <p class="subtitle">NLP-Powered Classification with 100% Accuracy</p>
+            <div class="meta">
+                <span class="meta-item">320 Emails Analyzed</span>
+                <span class="meta-item">100% Accuracy</span>
+                <span class="meta-item">TF-IDF + ML</span>
+            </div>
+        </header>
+
+        <section class="overview">
+            <h2>Project Overview</h2>
+            <p>An NLP-powered email spam detector that achieves perfect classification using machine learning. Trained on 320 emails, the system uses TF-IDF vectorization and multiple algorithms to identify spam patterns with 100% accuracy.</p>
+            <p>Built using Python, scikit-learn, and natural language processing techniques, this project demonstrates text preprocessing, feature extraction, and multi-model comparison.</p>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">Classification Accuracy</div></div>
+            <div class="stat-card"><div class="stat-number">320</div><div class="stat-label">Emails Analyzed</div></div>
+            <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">ML Models Compared</div></div>
+            <div class="stat-card"><div class="stat-number">45</div><div class="stat-label">TF-IDF Features</div></div>
+        </section>
+
+        <section>
+            <div class="viz-item">
+                <h3>Top Spam Word Indicators</h3>
+                <img src="visualizations/spam_words.png" alt="Spam Words">
+                <p class="viz-description">Top 15 words that appear most frequently in spam emails. "Free", "cash", and "prizes" are the strongest indicators of spam content.</p>
+            </div>
+
+            <div class="viz-item">
+                <h3>Model Performance Comparison</h3>
+                <img src="visualizations/model_comparison.png" alt="Model Comparison">
+                <p class="viz-description">All three models (Naive Bayes, Logistic Regression, Random Forest) achieved perfect 100% accuracy on the test set.</p>
+            </div>
+
+            <div class="viz-item">
+                <h3>Confusion Matrix</h3>
+                <img src="visualizations/confusion_matrix.png" alt="Confusion Matrix">
+                <p class="viz-description">Perfect classification with zero false positives or false negatives on 64 test emails.</p>
+            </div>
+        </section>
+
+        <section class="links">
+            <h2 style="color: #ffff00; margin-bottom: 30px;">Explore the Project</h2>
+            <a href="https://github.com/cyberyimi/spam-detector" class="btn">GitHub Repository</a>
+            <a href="https://monserojo.com" class="btn">Back to Portfolio</a>
+        </section>
+
+        <footer>
+            <p>Project by <a href="https://monserojo.com">Monse Rojo</a> | <a href="https://github.com/cyberyimi">GitHub</a> | <a href="https://www.linkedin.com/in/monse-rojo-6b70b3397/">LinkedIn</a></p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Built with Python, scikit-learn, and NLP</p>
+        </footer>
+    </div>
+</body>
+</html>
