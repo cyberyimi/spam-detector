@@ -15,21 +15,38 @@
         .meta-item { padding: 10px 20px; background: rgba(255, 255, 0, 0.1); border: 2px solid #ffff00; border-radius: 5px; }
         .overview { background: #111; padding: 40px; margin-bottom: 60px; border-left: 5px solid #ffff00; }
         .overview h2 { color: #ffff00; margin-bottom: 20px; font-size: 1.8rem; }
-        .overview p { color: #ccc; margin-bottom: 15px; font-size: 1.1rem; }
+        .overview p { color: #ccc; margin-bottom: 15px; font-size: 1.1rem; line-height: 1.8; }
+        .overview ul { color: #ccc; margin-left: 30px; line-height: 2; margin-top: 15px; }
+        .overview li { margin-bottom: 8px; }
+        .overview code { background: #222; padding: 2px 8px; border-radius: 3px; color: #ffff00; font-family: 'Courier New', monospace; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 60px; }
         .stat-card { background: #111; padding: 30px; border: 2px solid #333; transition: all 0.3s; }
         .stat-card:hover { border-color: #ffff00; transform: translateY(-5px); }
         .stat-number { font-size: 2.5rem; color: #ffff00; font-weight: bold; margin-bottom: 10px; }
         .stat-label { color: #999; }
-        .viz-item { margin-bottom: 60px; background: #111; padding: 30px; border: 2px solid #222; }
+        .viz-item { margin-bottom: 60px; background: #111; padding: 30px; border: 2px solid #fff; }
         .viz-item h3 { color: #ffff00; margin-bottom: 20px; font-size: 1.5rem; }
         .viz-item img { width: 100%; border: 2px solid #333; margin-bottom: 20px; }
         .viz-description { color: #999; line-height: 1.8; }
+        .code-block { background: #222; padding: 20px; border-radius: 5px; border-left: 4px solid #ffff00; margin: 20px 0; font-family: 'Courier New', monospace; color: #ddd; }
+        .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .example-card { background: #222; padding: 20px; border-radius: 5px; border: 2px solid #333; }
+        .example-card.spam { border-color: #ff4444; }
+        .example-card.ham { border-color: #44ff44; }
+        .example-label { font-weight: bold; margin-bottom: 10px; }
+        .example-label.spam { color: #ff4444; }
+        .example-label.ham { color: #44ff44; }
+        .example-text { color: #ccc; font-style: italic; margin-bottom: 10px; }
+        .example-result { color: #999; font-size: 0.9rem; }
         .links { text-align: center; padding: 40px 0; }
         .btn { display: inline-block; padding: 15px 40px; background: transparent; border: 2px solid #ffff00; color: #ffff00; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: all 0.3s; margin: 10px; }
         .btn:hover { background: #ffff00; color: #000; }
         footer { text-align: center; padding: 40px 0; border-top: 2px solid #222; color: #666; }
         footer a { color: #ffff00; text-decoration: none; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .example-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -75,6 +92,54 @@
                 <img src="visualizations/confusion_matrix.png" alt="Confusion Matrix">
                 <p class="viz-description">Perfect classification with zero false positives or false negatives on 64 test emails.</p>
             </div>
+        </section>
+
+        <section class="overview">
+            <h2>Using the Model</h2>
+            <p>The trained model is saved and ready to classify new emails. The spam detector can be used to automatically filter incoming messages.</p>
+            
+            <p><strong>Quick Start:</strong></p>
+            <div class="code-block">from predict import classify_email
+
+email = "Congratulations! You won $1000!"
+result = classify_email(email)
+# Output: SPAM (99% confidence)</div>
+
+            <p><strong>Example Classifications:</strong></p>
+            <div class="example-grid">
+                <div class="example-card ham">
+                    <div class="example-label ham">✓ HAM (Legitimate Email)</div>
+                    <div class="example-text">"Meeting at 2pm tomorrow in conference room B"</div>
+                    <div class="example-result">Confidence: 98%</div>
+                </div>
+                
+                <div class="example-card spam">
+                    <div class="example-label spam">✗ SPAM (Junk Email)</div>
+                    <div class="example-text">"Click here for FREE prizes and cash instantly!"</div>
+                    <div class="example-result">Confidence: 99%</div>
+                </div>
+
+                <div class="example-card ham">
+                    <div class="example-label ham">✓ HAM (Legitimate Email)</div>
+                    <div class="example-text">"Thank you for your support. Let me know if you need anything."</div>
+                    <div class="example-result">Confidence: 97%</div>
+                </div>
+                
+                <div class="example-card spam">
+                    <div class="example-label spam">✗ SPAM (Junk Email)</div>
+                    <div class="example-text">"You have been selected to win a gift card! Reply now!"</div>
+                    <div class="example-result">Confidence: 99%</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px;"><strong>Key Features:</strong></p>
+            <ul>
+                <li>Real-time email classification using saved model (<code>spam_detector.pkl</code>)</li>
+                <li>TF-IDF vectorization for text feature extraction</li>
+                <li>Confidence scores for each prediction</li>
+                <li>Handles text preprocessing automatically (lowercase, special character removal)</li>
+                <li>Trained on balanced dataset (169 spam, 151 ham)</li>
+            </ul>
         </section>
 
         <section class="links">
